@@ -1,32 +1,38 @@
-type Words = {
-  [key: string]: string;
+type PlayerA = {
+  // type은 interface와 다르게, 아예 값을 지정해줄 수 있음
+  // ex) name: "Kang_Seong_il"
+  name: string;
 };
 
-class Dict {
-  private words: Words;
-  constructor() {
-    this.words = {};
-  }
-  add(word: Word) {
-    if (this.words[word.term] === undefined) {
-      this.words[word.term] = word.def;
-    }
-  }
-  def(term: string) {
-    return this.words[term];
-  }
+// type의 property 추가 방법(상속)
+type PlayerAA = PlayerA & {
+  lastName: string;
+};
+
+const playerA: PlayerAA = {
+  name: "Seong_il",
+  lastName: "Kang",
+};
+
+interface PlayerB {
+  name: string;
 }
 
-class Word {
-  constructor(
-    public term: string,
-    public def: string
-  ) {}
+// interface의 property 추가 방법(상속)
+interface PlayerBB extends PlayerB {
+  lastName: string;
 }
 
-const kimchi = new Word("kimchi", "한국의 매운 음식");
-const pizza = new Word("pizza", "서양의 맛있는 음식");
-const dict = new Dict();
+// interface의 property 추가 방법 2(중복 추가)
+interface PlayerB {
+  health: number;
+}
 
-dict.add(kimchi);
-dict.add(pizza);
+const playerB: PlayerBB = {
+  name: "Seong_il",
+  lastName: "Kang",
+  health: 10,
+};
+
+console.log(playerA);
+console.log(playerB);
