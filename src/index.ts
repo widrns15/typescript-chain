@@ -1,38 +1,50 @@
-type PlayerA = {
-  // type은 interface와 다르게, 아예 값을 지정해줄 수 있음
-  // ex) name: "Kang_Seong_il"
-  name: string;
-};
-
-// type의 property 추가 방법(상속)
-type PlayerAA = PlayerA & {
-  lastName: string;
-};
-
-const playerA: PlayerAA = {
-  name: "Seong_il",
-  lastName: "Kang",
-};
-
-interface PlayerB {
-  name: string;
+interface SStorage<T> {
+  [key: string]: T;
 }
 
-// interface의 property 추가 방법(상속)
-interface PlayerBB extends PlayerB {
-  lastName: string;
+class LocalStorage<T> {
+  private storage: SStorage<T> = {};
+  // Create
+  set(key: string, value: T) {
+    if (this.storage[key] !== undefined) {
+      return console.log(`${key}가 이미 존재합니다.`);
+    }
+    this.storage[key] = value;
+  }
+  // Read
+  get(key: string): T | void {
+    if (this.storage[key] === undefined) {
+      return console.log(`${key}가 존재하지 않습니다.`);
+    }
+    return this.storage[key];
+  }
+  // Update
+  update(key: string, value: T) {
+    if (this.storage[key] !== undefined) {
+      this.storage[key] = value;
+    } else {
+      console.log(`${key}가 존재하지 않아 새로 만듭니다.`);
+      this.storage[key] = value;
+    }
+  }
+  // Delete
+  remove(key: string) {
+    if (this.storage[key] === undefined) {
+      return console.log(`${key}가 존재하지 않습니다.`);
+    }
+    delete this.storage[key];
+  }
+  clear() {
+    this.storage = {};
+  }
 }
 
-// interface의 property 추가 방법 2(중복 추가)
-interface PlayerB {
-  health: number;
-}
+const stringsStorage = new LocalStorage<string>();
 
-const playerB: PlayerBB = {
-  name: "Seong_il",
-  lastName: "Kang",
-  health: 10,
-};
+stringsStorage.get("key");
+stringsStorage.set("hello", "how are you?");
 
-console.log(playerA);
-console.log(playerB);
+const booleanStorage = new LocalStorage<boolean>();
+
+booleanStorage.get(undefined);
+booleanStorage.set("hello", true);
