@@ -1,11 +1,21 @@
-//compilerOptions 내의 속성은 자유롭게 커스텀 할 수 있습니다.
-
 {
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
     "sourceMap": true,
-    "outDir": "./dist"
+    "outDir": "bulid",
+    "jsx": "preserve",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "lib": ["es6", "dom"],
+    "strict": true,
+    "rootDir": "src",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "allowJs": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["**/external", "node_modules"]
 }
