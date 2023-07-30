@@ -1,20 +1,19 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "CommonJS",
     "sourceMap": true,
     "outDir": "build",
     "jsx": "preserve",
     "moduleResolution": "nodenext",
     "esModuleInterop": true,
-    "lib": ["es6", "dom"],
+    "lib": ["es6"],
     "strict": true,
     "rootDir": "src",
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
-    "allowJs": true
+    "strictNullChecks": true
   },
   "include": ["src/**/*"],
   "exclude": ["**/external", "node_modules"]
