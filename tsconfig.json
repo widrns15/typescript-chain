@@ -3,7 +3,7 @@
     "target": "es6",
     "module": "commonjs",
     "sourceMap": true,
-    "outDir": "bulid",
+    "outDir": "build",
     "jsx": "preserve",
     "moduleResolution": "nodenext",
     "esModuleInterop": true,
